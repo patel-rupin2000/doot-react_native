@@ -1,2 +1,1 @@
-# doot-reactnative
-DEVSPACE HACKATHON
+
