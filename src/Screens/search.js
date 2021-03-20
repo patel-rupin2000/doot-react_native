@@ -3,9 +3,20 @@
 import * as WebBrowser from 'expo-web-browser';
 import MapView from 'react-native-maps'
 import React, { useState, useEffect } from 'react';
-import { Platform,Button, Text, View, StyleSheet } from 'react-native';
+import { Platform, Text, View, StyleSheet,ImageBackground } from 'react-native';
 import * as Location from 'expo-location';
-
+import {
+  Container,
+  Body,
+  Content,
+  Header,
+  FooterTab,
+  Icon,
+  Title,
+  Left,
+  Button
+  
+} from "native-base";
 
 export default function SearchScreen(props) {
     const [location, setLocation] = useState(null);
@@ -50,13 +61,36 @@ export default function SearchScreen(props) {
     setResult(result);
   };
   return (
-    <View style={{paddingTop:20}} >
-      <Button title="nearest hospitals"  onPress={_handlePressButtonAsync} />
-      <Button title="nearest hotels"  onPress={_1handlePressButtonAsync} />
-      <Button title="nearest police-stations"  onPress={_2handlePressButtonAsync} />
+
+    <Container>
+
+    <ImageBackground source={require("./bg.jpg")} style={styles.image}>
+    <Button transparent onPress={() => props.navigation.openDrawer()}>
+        <Icon name="menu" style={{fontSize:40}}></Icon>
+      </Button>
+    
+    <Body style={{ alignSelf: "center", paddingTop: "40%" }}>
+    <Button hasText transparent  onPress={() => _handlePressButtonAsync()} ><Text>Nearest Hospitals</Text></Button>
+      <Button hasText transparent  onPress={() => _1handlePressButtonAsync()} ><Text>Nearest Hotel</Text></Button>
+      <Button hasText transparent  onPress={() => _2handlePressButtonAsync()} ><Text>Nearest Police Station</Text></Button>
+    
+  
       
-      
-      
-    </View>
+    
+  
+
+
+ 
+    </Body>
+    </ImageBackground>
+  </Container>
   );
 }
+const styles = StyleSheet.create({
+
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
+});
