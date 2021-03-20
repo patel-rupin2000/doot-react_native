@@ -36,7 +36,7 @@ import Search from "./src/Screens/search";
 
 
 //const Tabs = AnimatedTabBarNavigator();
-
+import change from "./src/Screens/numbers"
 
 
 
@@ -46,7 +46,9 @@ import Search from "./src/Screens/search";
 function RootNavigator(props,{navigation})
 
 {
-
+ 
+  
+  
 
   const Drawers = createDrawerNavigator();
   function DrawerContent(props,{ navigation }) {
@@ -117,6 +119,14 @@ function RootNavigator(props,{navigation})
                 props.navigation.navigate("Search");
               }}
             />
+                                                <DrawerItem
+              label="Numbers"
+              labelStyle={{color:"white",fontWeight:"bold",fontSize:18}}
+              onPress={() => {
+                props.navigation.navigate("Numbers");
+              }}
+            />
+        
         
 
 
@@ -124,6 +134,7 @@ function RootNavigator(props,{navigation})
           </Drawer.Section>
         </View>
         <Button  title = "LOGOUT" onPress = {() =>clearAppData()} color = "black"/>
+        
         <View style={{backgroundColor:"transparent",alignSelf:"center",paddingTop:"60%",flexDirection:"row"}}>
           
         </View>
@@ -153,7 +164,8 @@ function RootNavigator(props,{navigation})
         <Drawers.Screen name="Auth" component={AuthScreen} />
         <Drawers.Screen name="Home" component={smtk} />
         <Drawers.Screen name="Map" component={MapScreen} />
-         <Drawers.Screen name="Search" component={SearchScreen} /> 
+         <Drawers.Screen name="Search" component={SearchScreen} />
+         <Drawers.Screen name="Numbers" component={change} /> 
         
         
       </Drawers.Navigator>
