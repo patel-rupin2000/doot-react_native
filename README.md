@@ -5,7 +5,7 @@ Doot app is SOS system incase of any emergency or accidents such as earthquake, 
 The app also gives facility to search nearby hospitals and hotels and thus also allow user to know his/her current location.
 
 The app also provide SOS system for women safety thereby giving them facility to search nearby police stations and other required locations.
-
+<h1>DOOT!</h1>
 <img src="src/Images/flowchart.jpg"/>  
 
 To run App:
