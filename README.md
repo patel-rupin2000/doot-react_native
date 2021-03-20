@@ -7,7 +7,20 @@ The app also gives facility to search nearby hospitals and hotels and other safe
 
 The app also provide SOS system for women safety thereby giving them facility to search nearby police stations and other required locations.
 
+<h1>System features</h1>
+
+1->Signup and Login -  Safe and secure way of storing login details, with easy to retrieve data from firebase database.
+
+2->SOS sender feature - That lets its users send notifications in case of an emergency or a panic situation. This is very helpful in tracking the whereabouts of the person.
+
+3->Offline step-by-step instructions manual for each emergency situation.
+
+4->Interactive map view of current location, with search options for nearby hospitals, police Stations and hotels.
+
+5->Modification of phone numbers for future use capability from within the application.
+
 <h1>DOOT! app flow controls</h1>
+
 <img src="src/Images/flowchart.jpg"/>  
 
 <h1>To run App:</h1>
