@@ -38,7 +38,7 @@ For downloading expo-cli open commannd prompt and type:
 
 
  Download Zip or clone:
- <h3><a>https://github.com/Btech-Projects/doot-react_native</a></h3>
+ <a>https://github.com/Btech-Projects/doot-react_native</a>
 
    open file location in a command prompt and run following commands:
          
