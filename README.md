@@ -10,7 +10,7 @@ The app also provide SOS system for women safety thereby giving them facility to
 <h1>DOOT! app flow controls</h1>
 <img src="src/Images/flowchart.jpg"/>  
 
-To run App:
+<h1>To run App:</h1>
 You must install expo-cli and node-js to your system.
 
 install node-js -> https://nodejs.org/en/    (better to use LTS version)
