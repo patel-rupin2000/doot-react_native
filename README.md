@@ -1,9 +1,9 @@
 <h1>Doot!</h1>
 <img src="src/Images/logo.jpg"/>  
 
-Doot app is SOS system incase of any emergency or accidents such as earthquake, suddenly person suffer heart attack, road accidents etc.The app also display steps to be taken incase of any such accidents.The SOS system will automatically send the message to the known person of the user with location.
+Doot app is SOS system incase of any emergency or accidents such as earthquake, suddenly person suffer heart attack, road accidents etc.The app also display steps to be taken incase of any such accidents.The SOS system will automatically send the message to the known persons phone numbers with victim's current locations and coordinates current  of the user with location.
 
-The app also gives facility to search nearby hospitals and hotels and thus also allow user to know his/her current location.
+The app also gives facility to search nearby hospitals and hotels and other safe places thus also allow user to know his/her current location.
 
 The app also provide SOS system for women safety thereby giving them facility to search nearby police stations and other required locations.
 
