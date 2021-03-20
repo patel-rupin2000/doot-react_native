@@ -30,7 +30,6 @@ useEffect(() =>{
 
       console.log("000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
       console.log(emailInfo.id);
-      console.log(userData);
       
 
    

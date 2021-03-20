@@ -5,8 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  ImageBackground,TouchableOpacity,Image
+  ImageBackground
 } from 'react-native';
 import * as Location from 'expo-location';
 import Front from '../components/front';
@@ -22,27 +21,13 @@ import {
   Button
   
 } from "native-base";
-import ApiKeys from '../../constants';
-var firebase = require("firebase");
 import { useNavigation, NavigationContainer } from "@react-navigation/native";
 import { withNavigation } from "react-navigation";
 import * as SMS from 'expo-sms';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 function First(props)  {
-  const [isans, setAns] = useState('');
-  const [isans1, setAns1] = useState('');
-  const [isans2, setAns2] = useState('');
-  const [name, setName] = useState('');
-  const [uname, setUname] = useState('');
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   useEffect(() => {
-    
-
-
-
-
-
     (async () => {
       let { status } = await Location.requestPermissionsAsync();
       if (status !== 'granted') {
@@ -53,57 +38,23 @@ function First(props)  {
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
       console.log(location.coords.latitude)
-      const userData = await AsyncStorage.getItem('userInfo')
-      
-      
-      const transformedData = JSON.parse(userData)
-      const { t,email,name,one,two,three} = transformedData
-      //const expirationDate = new Date(expiryDate)
-      console.log(userData);
-
-
     })();
   }, []);
 
-  
-  let phone_numbers=[]
+  let text = 'Waiting..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+    
+
+  }
   
   const _SOS = async () => {
-    
-      const userData = await AsyncStorage.getItem('userInfo')
-      
-      
-      const transformedData = JSON.parse(userData)
-      const { t,email,name,one,two,three} = transformedData
-      const one_= new Date(one)
-      const two_= new Date(two)
-      const three_= new Date(three)
-    
-
-      //if(expirationDate<=new Date() || !token || !userId){
-      //  props.navigation.navigate('Auth')
-      //  return
-      //}
-      
-        
-      
-      
-
-      console.log("000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-      
-      console.log(one,two,three);
-      
-
-   
-      //props.navigation.navigate('Home',{data:emailId});
-      
-      
-      
-    
   const isAvailable = await SMS.isAvailableAsync();
 if (isAvailable) {
   const { result } = await SMS.sendSMSAsync(
-    [one,two,three],
+    ['7069490002', '7217750348'],
     `SOS need help please:
 
     location:
@@ -117,33 +68,9 @@ if (isAvailable) {
     
     }
   );
-}
- else {
-
-}
-
-
-}
-
-
-
-
-  
-  
-
-  
-    
-    
-  
-
-
-
-    
-
- 
-    
-
-  
+} else {
+  // misfortune... there's no SMS available on this device
+}}
   return (
         <Container>
 
@@ -154,19 +81,9 @@ if (isAvailable) {
         <Text style={{fontWeight:"bold",fontSize:25,color:"white",alignSelf:"center",justifyContent:"center"}}>SOS DOOT APP</Text>
         <Body style={{ alignSelf: "center", paddingTop: "40%" }}>
         
- 
-  
-      
-        
         <Front />
-       
-        <TouchableOpacity
-        
-        onPress={() => _SOS()}
-      >
-        <Image source={require("../../assets/sos.png")}/>
-        
-      </TouchableOpacity>
+        <Button hasText transparent  onPress={() => _SOS()} ><Text>Send SOS</Text></Button>
+          
         
       
     
