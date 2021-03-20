@@ -11,14 +11,22 @@ The app also provide SOS system for women safety thereby giving them facility to
 To run App:
 You must install expo-cli and node-js to your system.
 
+install node-js -> https://nodejs.org/en/    (better to use LTS version)
+
 install expo-cli -> https://expo.io/
 
-install node-js -> https://nodejs.org/en/    (better to use LTS version)
+For downloading expo-cli open commannd prompt and type:
+
+             npm install --global expo-cli
+
+
 
 
  Download Zip or clone:
 
    open file location in a command prompt and run following commands:
+         
+         cd <Project directory location>
 
          npm install
 
