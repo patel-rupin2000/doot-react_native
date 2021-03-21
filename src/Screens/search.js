@@ -3,7 +3,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import MapView from 'react-native-maps'
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet,ImageBackground } from 'react-native';
+import { Platform, Text, View, StyleSheet,ImageBackground, Image } from 'react-native';
 import * as Location from 'expo-location';
 import {
   Container,
@@ -18,7 +18,7 @@ import {
   
 } from "native-base";
 
-export default function SearchScreen(props) {
+export default function SearchScreen({navigation}) {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
   
@@ -64,15 +64,32 @@ export default function SearchScreen(props) {
 
     <Container>
 
-    <ImageBackground source={require("./bg.jpg")} style={styles.image}>
-    <Button transparent onPress={() => props.navigation.openDrawer()}>
-        <Icon name="menu" style={{fontSize:40}}></Icon>
-      </Button>
+    <ImageBackground source={require("../Images/bg1.jpg")} style={styles.image}>
+    <View style={styles.component}>
+    <Icon name="menu" onPress={() => navigation.openDrawer()} style={{fontSize:40, marginTop: 27, marginLeft: '3%'}}></Icon>
+    <Image
+                source={require("../Images/doot2.png")}
+                style={{
+                  height: 40,
+                  width: 150,
+                  justifyContent: "center",
+                  alignSelf: "center",
+                  marginBottom: 26, marginLeft: '20%',
+                  marginTop:70,
+                }}
+              >
+
+              </Image>
+</View>
     
-    <Body style={{ alignSelf: "center", paddingTop: "40%" }}>
+    <Body style={{ alignSelf: "center", paddingTop: "25%",  }}>
+    <View style={{width: 220, height: 49, borderRadius: 5, marginTop: '10%', borderColor: '#27A5Ef', borderWidth: 2, paddingLeft: 5}}>
     <Button hasText transparent  onPress={() => _handlePressButtonAsync()} ><Text>Nearest Hospitals</Text></Button>
-      <Button hasText transparent  onPress={() => _1handlePressButtonAsync()} ><Text>Nearest Hotel</Text></Button>
-      <Button hasText transparent  onPress={() => _2handlePressButtonAsync()} ><Text>Nearest Police Station</Text></Button>
+    </View>
+    <View style={{width: 220, height: 49, borderRadius: 5, marginTop: '10%', borderColor: '#27A5Ef', borderWidth: 2, paddingLeft: 5}}>
+      <Button hasText transparent  onPress={() => _1handlePressButtonAsync()} ><Text>Nearest Hotel</Text></Button></View>
+      <View style={{width: 220, height: 49, marginTop: '10%', borderRadius: 5, borderColor: '#27A5Ef', borderWidth: 2, paddingLeft: 5}}>
+      <Button hasText transparent  onPress={() => _2handlePressButtonAsync()} ><Text>Nearest Police Station</Text></Button></View>
     
   
       
@@ -93,4 +110,19 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     justifyContent: "center"
   },
+  component: {
+    backgroundColor: '#F0F0FF', 
+    // justifyContent: 'center', 
+    alignItems: 'center', 
+    height: 75,
+    shadowColor: '#FFFFFF',
+    shadowOffset: {
+        width: 0,
+        height: 12
+    },
+    shadowOpacity: 0.2,
+    elevation: 12,
+    position: 'relative',
+    flexDirection: 'row'
+}
 });

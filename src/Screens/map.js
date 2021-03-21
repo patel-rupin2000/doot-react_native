@@ -382,6 +382,7 @@ export default class MapScreen extends React.Component {
    
     return (
       <View style={styles.container}>
+      
           
         <TextInput
           style={styles.txtPosition}
@@ -431,5 +432,20 @@ const styles = StyleSheet.create({
   },
   txtPosition: {
     paddingTop: 40
-  }
+  },
+  component: {
+    backgroundColor: '#F0F0FF', 
+    // justifyContent: 'center', 
+    alignItems: 'center', 
+    height: 68,
+    shadowColor: '#FFFFFF',
+    shadowOffset: {
+        width: 0,
+        height: 12
+    },
+    shadowOpacity: 0.2,
+    elevation: 12,
+    position: 'relative',
+    flexDirection: 'row'
+}
 });

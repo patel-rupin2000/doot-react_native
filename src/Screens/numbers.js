@@ -65,35 +65,52 @@ setIsLoading(false)
 return(
     <Container>
 
-        <ImageBackground source={require("./bg.jpg")} style={styles.image}>
-        <Button transparent onPress={() => props.navigation.openDrawer()}>
-            <Icon name="menu" style={{fontSize:40,paddingTop:80}}></Icon>
-          </Button>
-        <Text style={{fontWeight:"bold",fontSize:25,color:"white",alignSelf:"center",justifyContent:"center"}}>SOS DOOT APP</Text>
+        <ImageBackground source={require("../Images/bg1.jpg")} style={styles.image}>
+        <View style={styles.component}>
+    <Icon name="menu" onPress={() => props.navigation.openDrawer()} style={{fontSize:40, marginTop: 27, marginLeft: '3%'}}></Icon>
+    <Text style={{fontSize: 25, marginTop: 27, marginLeft: '15%'}}>Change Number</Text>
+</View>
+        {/* <Text style={{fontWeight:"bold",fontSize:25,color:"white",alignSelf:"center",justifyContent:"center"}}>SOS DOOT APP</Text> */}
         <Body style={{ alignSelf: "center", paddingTop: "40%" }}>
 
 
         <TextInput
-        style={{height: 40}}
-        placeholder="Type here to translate!"
+        style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 2, marginTop: 10,paddingLeft: 10}}
+        placeholder="Type Phone number1!"
+        mode='outlined'
         onChangeText={text => setAns(text)}
         value={isans}
       />
               <TextInput
-        style={{height: 40}}
-        placeholder="Type here to translate!"
+        style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 2, marginTop: 10,paddingLeft: 10}}
+        placeholder="Type Phone number2!"
         onChangeText={text => setAns1(text)}
         value={isans1}
       />
               <TextInput
-        style={{height: 40}}
-        placeholder="Type here to translate!"
+        style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 2, marginTop: 10,paddingLeft: 10}}
+        placeholder="Type Phone number3!"
         onChangeText={text => setAns2(text)}
         value={isans2}
       />
+
+{/* <View style={styles.rowContainer}>
+    <Text style={styles.text}>Phone 3</Text>
+    <TextInput
+        style={{height: 40}}
+        placeholder="Type here!"
+        onChangeText={text => setAns2(text)}
+        value={isans2}
+      />
+    </View> */}
  
-  
-      <Button hasText   onPress={() =>_up(isans,isans1,isans2)} ><Text>SET PHONE NUMBERS</Text></Button>
+ <TouchableOpacity 
+      style={{marginLeft: 0}}
+    onPress={() => _up(isans,isans1,isans2)}
+    >
+    <Text style={styles.textStyle}>SET PHONE NUMBERS</Text>
+    </TouchableOpacity>
+      {/* <Button hasText   onPress={() =>_up(isans,isans1,isans2)} ><Text>SET PHONE NUMBERS</Text></Button> */}
         
     
        
@@ -123,15 +140,58 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: '400',
     },
+    rowContainer: {
+      // flex: 1, 
+      flexDirection: "row",
+      // justifyContent: 'space-around',
+      // alignItems: "center"
+    },
+    textInput: {
+      flex: 1,
+      backgroundColor: 'white', 
+      borderColor: 'black',
+    },
+    text: {
+      flex: 1
+    },
     highlight: {
       fontWeight: '700',
       color: 'blue'
+    },
+    textStyle: {
+      color: "white",
+      fontWeight: "bold",
+      textAlign: "center",
+      backgroundColor: "#27A5Ef",
+      borderRadius: 20,
+      padding: 20,
+      elevation: 2,
+      width: 225,
+      alignSelf: 'center',
+      marginTop: 25,
+      // marginLeft: '40%'
+      // paddingBottom: 20
     },
     image: {
       flex: 1,
       resizeMode: "cover",
       justifyContent: "center"
     },
+    component: {
+      backgroundColor: '#F0F0FF', 
+      // justifyContent: 'center', 
+      alignItems: 'center', 
+      height: 68,
+      shadowColor: '#FFFFFF',
+      shadowOffset: {
+          width: 0,
+          height: 12
+      },
+      shadowOpacity: 0.2,
+      elevation: 12,
+      position: 'relative',
+      flexDirection: 'row'
+  }
   });
   
 export default change;

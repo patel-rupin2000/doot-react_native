@@ -5,16 +5,22 @@ import { createStackNavigator } from 'react-navigation-stack';
 import {Text,ScrollView,Image,TextInput, View, KeyboardAvoidingView, StyleSheet, Button, ActivityIndicator,ImageBackground,Alert} from 'react-native';
 import { Content } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import ApiKeys from './constants';
+var firebase = require("firebase");
 export default function AuthScreen (props){
   //AsyncStorage.clear().then(() => console.log('Cleared'))
-	const [isEmailText, setIsEmailText]  = useState('') 
+	const [isEmailText, setIsEmailText]  = useState('')
+  const [isName, setIsName]  = useState('')
+  const [isOne, setIsOne]  = useState('')
+  const [isTwo, setIsTwo]  = useState('')
+  const [isThree, setIsThree]  = useState('')
+
 	const [isPassText, setIsPassText]  = useState('') 
 	const [isValid, setIsValid] = useState(false)
 	const [isLogin,setIsLogin] = useState(true)
 	const [isLoading, setIsLoading] = useState(false)
     const x = true
-	const signUpHandler =  async(email, password) =>{
+	const signUpHandler =  async(email, password,name,one,two,three) =>{
         setIsLoading(true)
         const response  =  await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key= AIzaSyDXjHZ73gcni1Ry2KtrDv67GnArl_w2YeM",{
 			method :'POST',
@@ -24,6 +30,10 @@ export default function AuthScreen (props){
 			body:JSON.stringify({
 				email,
 				password,
+        name,
+        one,
+        two,
+        three,
 				returnSecureToken:true
 			})
         })
@@ -34,27 +44,76 @@ export default function AuthScreen (props){
 				'Content-Type':'application/json'
 			},
 			body:JSON.stringify({
-				email
+				email,
+        name,
+        one,
+        two,
+        three
 			})
         })
+        const resData2 = await response2.json()
+        if (!firebase.apps.length){
+          firebase.initializeApp(ApiKeys.FirebaseConfig);
+          
+        }
+        var t=resData2.name;
+        /*firebase.database().ref(`users/${t}`).set({
+          one:one,
+          two:two,
+          three:three
+        })*/
+        console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
+        console.log(one)
+        
+
+    
+        
 
 
         
-        const resData2 = await response2.json()
+        
         console.log("resData2");
-        console.log(resData2);
+        console.log(resData2.name);
+       // props.navigation.navigate('Numbers', resData2)
+      
+      
+      console.log("=============================================")
+      //props.navigation.navigate('Home',{data:email});
+      
+
+
 
         setIsLoading(false)
 
 
         const resData = await response.json()
         console.log("resData");
+        const key=await AsyncStorage.setItem('@MySuperStore:key', 'I like to save it.');
+    console.log("66666666666666");
+    console.log(key);
         console.log(resData);
+        const saveDataToStorage = (t,email,name,one,two,three) =>{
+          AsyncStorage.setItem(
+            'userInfo',JSON.stringify({
+              d_name:t,
+              emailId:email,
+              name:name,
+              one:one,
+              two:two,
+              three:three,
+              
+            }))
+        }
+        saveDataToStorage(t,email,name,one,two,three)
+        console.log("data saved")
+        
+        
+      
         
 
     }
     
-	const loginHandler =   async (email, password) =>{
+	const loginHandler =   async (email, password,name,one,two,three) =>{
     
     
         setIsLoading(true)
@@ -67,6 +126,10 @@ export default function AuthScreen (props){
 			body:JSON.stringify({
 				email,
 				password,
+        name,
+        one,
+        two,
+        three,
 				returnSecureToken:true
 			})
         
@@ -76,6 +139,7 @@ export default function AuthScreen (props){
     console.log(key);
 
         setIsLoading(false)
+        
         
 
 
@@ -87,13 +151,18 @@ export default function AuthScreen (props){
             id:email
           }
      
-          const saveDataToStorage = (token,userId,expirationDate,email) =>{
+          const saveDataToStorage = (token,userId,expirationDate,email,name,one,two,three) =>{
             AsyncStorage.setItem(
               'userData',JSON.stringify({
                 token:token,
                 userId:userId,
                 expiryDate: expirationDate.toISOString(),
-                emailId:email
+                emailId:email,
+                name:name,
+                one:one,
+                two:two,
+                three:three,
+                
               }))
           }
       
@@ -103,7 +172,8 @@ export default function AuthScreen (props){
         
           
           const expirationDate = new Date(new Date().getTime() + parseInt(resData.expiresIn)*1000 )
-          saveDataToStorage(resData.idToken,resData.localId, expirationDate,email)
+          saveDataToStorage(resData.idToken,resData.localId, expirationDate,email,name,one,two,three)
+          
           console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
           console.log(resData.idToken,resData.localId,email);
           console.log(expirationDate);
@@ -119,10 +189,10 @@ export default function AuthScreen (props){
 
   
 return (
-  <ImageBackground source={require("./src/Screens/bg.jpg")} style={styles.image}>
+  <ImageBackground source={require("./src/Images/bg1.jpg")} style={styles.image}>
 	<KeyboardAvoidingView>
   <Image
-                source={require("./assets/logo.png")}
+                source={require("./src/Images/logo.png")}
                 style={{
                   height: 200,
                   width: 200,
@@ -135,7 +205,20 @@ return (
 
               </Image>
     <View>
-      <Text style={{fontWeight:"bold",fontSize:40,color:"#27a5ef",justifyContent:"center",alignSelf:"center"}}>DOOT</Text>
+    <Image
+                source={require("./src/Images/doot2.png")}
+                style={{
+                  height: 40,
+                  width: 150,
+                  justifyContent: "center",
+                  alignSelf: "center",
+                  marginBottom: 26,
+                  // marginLeft: '20%',
+                  marginTop:40,
+                }}
+              >
+
+              </Image>
     </View>
 
 	<ScrollView>
@@ -157,8 +240,39 @@ return (
            	secureTextEntry = {x}
             
           />
+          <Text style={styles.label}>Name</Text>
+                    <TextInput
+            style={styles.input}
+            value={isName}
+            onChangeText={text =>  setIsName(text)}
+            keyboardType = 'email-address' 
+            
+          />
+          <Text style={styles.label}>Phone Number-1</Text>
+                    <TextInput
+            style={styles.input}
+            value={isOne}
+            onChangeText={text =>  setIsOne(text)}
+            keyboardType = 'email-address' 
+            
+          />
+          <Text style={styles.label}>Phone Number-2</Text>
+                    <TextInput
+            style={styles.input}
+            value={isTwo}
+            onChangeText={text =>  setIsTwo(text)}
+            keyboardType = 'email-address' 
+            
+          /><Text style={styles.label}>Phone Number-3</Text>
+                    <TextInput
+            style={styles.input}
+            value={isThree}
+            onChangeText={text =>  setIsThree(text)}
+            keyboardType = 'email-address' 
+            
+          />
           <View>
-          	{isLoading ? <ActivityIndicator size = 'small' color = "black"/>:<Button title = {isLogin ? "Login" :'Sign Up'} onPress = {() =>{isLogin ? loginHandler(isEmailText,isPassText):signUpHandler(isEmailText,isPassText)}} color = "#27a5ef"/>}
+          	{isLoading ? <ActivityIndicator size = 'small' color = "black"/>:<Button title = {isLogin ? "Login" :'Sign Up'} onPress = {() =>{isLogin ? loginHandler(isEmailText,isPassText,isName,isOne,isTwo,isThree):signUpHandler(isEmailText,isPassText,isName,isOne,isTwo,isThree)}} color = "#27a5ef"/>}
 
           	<Button  title = {isLogin ? "Switch to SignUp" :"Switch to Login"} onPress = {() =>{setIsLogin(prevState => !prevState)}} color = "black"/>
           </View>
@@ -182,7 +296,7 @@ const styles = StyleSheet.create({
     },
     label: {
       color:"white",
-      marginVertical: 10
+      marginVertical: 2
     },
     input: {
       paddingHorizontal: 2,

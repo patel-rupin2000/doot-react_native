@@ -10,11 +10,12 @@ import React ,{ useState, useEffect, useRef,useCallback, } from "react";
 import {Provider} from 'react-redux';
 import ApiKeys from './constants';
 import smtk from './src/Screens/stack';
-import { View, Image, Alert, Button, StyleSheet, Text ,ImageBackground,TouchableHighlight} from "react-native";
+import { View, Image, Alert, Button, StyleSheet, Text ,ImageBackground,TouchableOpacity} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import MapScreen from './src/Screens/map'
 import SearchScreen from './src/Screens/search'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import change from './src/Screens/numbers';
 
 var firebase = require("firebase");
 import {
@@ -69,7 +70,7 @@ function RootNavigator(props,{navigation})
   
   
     return (
-      <ImageBackground  source={require("./src/Screens/bg.jpg")} style={styles.image}>
+      <ImageBackground  source={require("./src/Images/bg1.jpg")} style={styles.image}>
       <DrawerContentScrollView {...props}>
         <View>
         <View style={styles.userInfoSection}>
@@ -84,7 +85,7 @@ function RootNavigator(props,{navigation})
   
           <View>
             <Image
-              source={require("./assets/logo.png")}
+              source={require("./src/Images/logo.png")}
               style={{
                 height: 200,
                 width: 200,
@@ -118,12 +119,24 @@ function RootNavigator(props,{navigation})
               }}
             />
         
-
+        <DrawerItem
+              label="Numbers"
+              labelStyle={{color:"white",fontWeight:"bold",fontSize:18}}
+              onPress={() => {
+                props.navigation.navigate("Numbers");
+              }}
+            />
 
 
           </Drawer.Section>
         </View>
-        <Button  title = "LOGOUT" onPress = {() =>clearAppData()} color = "black"/>
+        <TouchableOpacity 
+      style={{marginLeft: 0}}
+    onPress={() => clearAppData()}
+    >
+    <Text style={styles.textStyle}>LOGOUT</Text>
+    </TouchableOpacity>
+        {/* <Button  title = "LOGOUT" onPress = {() =>clearAppData()} color = "black"/> */}
         <View style={{backgroundColor:"transparent",alignSelf:"center",paddingTop:"60%",flexDirection:"row"}}>
           
         </View>
@@ -154,6 +167,7 @@ function RootNavigator(props,{navigation})
         <Drawers.Screen name="Home" component={smtk} />
         <Drawers.Screen name="Map" component={MapScreen} />
          <Drawers.Screen name="Search" component={SearchScreen} /> 
+         <Drawers.Screen name="Numbers" component={change} /> 
         
         
       </Drawers.Navigator>
@@ -174,7 +188,20 @@ const styles = StyleSheet.create({
     flexDirection:"row",
 
   },
-
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#3D3D3D",
+    borderRadius: 20,
+    padding: 20,
+    elevation: 2,
+    width: 155,
+    alignSelf: 'center',
+    marginTop: 25,
+    // marginLeft: '40%'
+    // paddingBottom: 20
+  },
 });
 
 export default RootNavigator;
