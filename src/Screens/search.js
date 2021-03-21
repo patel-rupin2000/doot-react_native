@@ -84,12 +84,12 @@ export default function SearchScreen({navigation}) {
     
     <Body style={{ alignSelf: "center", paddingTop: "25%",  }}>
     <View style={{width: 220, height: 49, borderRadius: 5, marginTop: '10%', borderColor: '#27A5Ef', borderWidth: 2, paddingLeft: 5}}>
-    <Button hasText transparent  onPress={() => _handlePressButtonAsync()} ><Text>Nearest Hospitals</Text></Button>
+    <Button hasText transparent  onPress={() => _handlePressButtonAsync()} ><Text style={{color:'white',fontWeight:"bold",fontSize:20}}>Nearest Hospitals</Text></Button>
     </View>
     <View style={{width: 220, height: 49, borderRadius: 5, marginTop: '10%', borderColor: '#27A5Ef', borderWidth: 2, paddingLeft: 5}}>
-      <Button hasText transparent  onPress={() => _1handlePressButtonAsync()} ><Text>Nearest Hotel</Text></Button></View>
+      <Button hasText transparent  onPress={() => _1handlePressButtonAsync()} ><Text style={{color:'white',fontWeight:"bold",fontSize:20}}>Nearest Hotel</Text></Button></View>
       <View style={{width: 220, height: 49, marginTop: '10%', borderRadius: 5, borderColor: '#27A5Ef', borderWidth: 2, paddingLeft: 5}}>
-      <Button hasText transparent  onPress={() => _2handlePressButtonAsync()} ><Text>Nearest Police Station</Text></Button></View>
+      <Button hasText transparent  onPress={() => _2handlePressButtonAsync()} ><Text style={{color:'white',fontWeight:"bold",fontSize:20}}>Nearest Police Station</Text></Button></View>
     
   
       
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   component: {
-    backgroundColor: '#F0F0FF', 
+    backgroundColor: '#3a3b3d', 
     // justifyContent: 'center', 
     alignItems: 'center', 
     height: 75,

@@ -68,7 +68,7 @@ return(
         <ImageBackground source={require("../Images/bg1.jpg")} style={styles.image}>
         <View style={styles.component}>
     <Icon name="menu" onPress={() => props.navigation.openDrawer()} style={{fontSize:40, marginTop: 27, marginLeft: '3%'}}></Icon>
-    <Text style={{fontSize: 25, marginTop: 27, marginLeft: '15%'}}>Change Number</Text>
+    <Text style={{fontSize: 25, marginTop: 27, marginLeft: '15%',color:'white'}}>Change Number</Text>
 </View>
         {/* <Text style={{fontWeight:"bold",fontSize:25,color:"white",alignSelf:"center",justifyContent:"center"}}>SOS DOOT APP</Text> */}
         <Body style={{ alignSelf: "center", paddingTop: "40%" }}>
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
       justifyContent: "center"
     },
     component: {
-      backgroundColor: '#F0F0FF', 
+      backgroundColor: '#3a3b3d', 
       // justifyContent: 'center', 
       alignItems: 'center', 
       height: 68,

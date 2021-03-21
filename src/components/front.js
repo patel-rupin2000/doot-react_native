@@ -26,12 +26,12 @@ function Front({navigation}){
                 marginTop: 15,
               }}
             ></Image>
-            <Text style={{marginTop:20, fontSize: 20,marginRight: 40}}>Select any Option for first Aid </Text>
+            <Text style={{color:'white',marginTop:20, fontSize: 20,marginRight: 40}}>Select any Option for first Aid </Text>
           </View>
         <View style={{position: 'relative',marginTop:'50%',height: 50, width: 230,marginLeft: '5%', justifyContent: 'center', alignItems: 'center', borderColor: '#27A5Ef', borderWidth: 2}}>
             <Picker
         selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
+        style={{ height: 50, width: 150,color:'white' }}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
       >
         <Picker.Item label="Snake bite" value="Snake" />

@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   component: {
-    backgroundColor: '#F0F0FF', 
+    backgroundColor: '#3a3b3d', 
     // justifyContent: 'center', 
     alignItems: 'center', 
     height: 75,

@@ -70,7 +70,7 @@ function Info({navigation,route}){
                 renderItem={({item})=>{
                 return <View style={{marginBottom: 10, borderWidth: 2,borderColor:'black', padding: 6}}>
                     <View>
-                    <Text style={{fontSize:20}}>Step - &gt; {item}</Text>
+                    <Text style={{fontSize:20,color:'white'}}>Step - &gt; {item}</Text>
 
                         </View>
                 </View>
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
       justifyContent: "center"
     },
     component: {
-      backgroundColor: '#F0F0FF', 
+      backgroundColor: '#3a3b3d', 
       // justifyContent: 'center', 
       alignItems: 'center', 
       height: 75,
