@@ -18,7 +18,7 @@ The app also provide SOS system for women safety thereby giving them facility to
 4->Interactive map view of current location, with search options for nearby hospitals, police Stations and hotels.
 
 5->Modification of phone numbers for future use capability from within the application.
-<h3>For more information open DOT SOS APP .pdf file present in repository</h3>
+<h3>For more information open DOOT SOS APP .pdf file present in repository</h3>
 
 <h1>DOOT! app flow controls</h1>
 
